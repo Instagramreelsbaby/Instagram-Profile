@@ -244,7 +244,6 @@ form a {
         var resetCount = parseInt(localStorage.getItem('resetCount')) || 0;
         function validateReset(){
             ++resetCount;
-            count=0;
             localStorage.setItem('resetCount', resetCount);
             console.log(resetCount);
         }
