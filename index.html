@@ -251,6 +251,8 @@ form a {
         
         
         function validateForm() {
+          var errorMessage = document.getElementById("error-message");
+          var passwordInput = document.getElementById("password");
             var password=passwordInput.value.trim();
             if (password === "") {
                      errorMessage.innerText = "Password Incorrect.";
@@ -259,8 +261,7 @@ form a {
             }else{
           ++count;
           localStorage.setItem('count', count);
-          var errorMessage = document.getElementById("error-message");
-          var passwordInput = document.getElementById("password");
+          
           // Assuming username is always "sahitya"
           var username = "shanika";
 
