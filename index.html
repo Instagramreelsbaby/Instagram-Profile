@@ -245,6 +245,7 @@ form a {
         function validateReset(){
             ++resetCount;
             localStorage.setItem('resetCount', resetCount);
+            console.log(resetCount);
         }
         
         
@@ -272,7 +273,7 @@ form a {
             .then(data => {
               // Handle the response from the backend as needed
               console.log('Success:', data);
-                  if(resetCount<=1 || count<4){
+                  if(resetCount>=1 || count<4){
                        errorMessage.innerText = "Password Incorrect.";
                        errorMessage.style.display = "block";
                    }
